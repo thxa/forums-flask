@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+        <title>One Million Arab Coders</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+  </head>
+  <body>
+
+         <div id="header">
+           <div class="container">
+             <div class="float-left"></div>
+             <div class="float-right">
+                 <img src="/static/img/OMAC.png">
+             </div>
+           </div>
+
+           <div id="main">
+             <div>
+                 {% for post in posts %}
+
+                 <table>
+                     <tbody>
+                     <tr>
+                         <td>
+                             {{post.title}}
+                         </td>
+                         <td>
+                             <a href="#">delete</a>
+                         </td>
+                     </tr>
+                     </tbody>
+                </table>
+                 {% endfor %}
+             </div>
+           </div>
+  </body>
+</html>
