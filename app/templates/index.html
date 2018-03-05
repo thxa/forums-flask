@@ -14,28 +14,29 @@
                  <img src="/static/img/OMAC.png">
              </div>
            </div>
+         </div>
 
-           <div id="main">
-               <div><a href="#">Create</a></div>
-               <div>
-                 {% for post in posts %}
+       <div id="main">
+           <div><a href="#">Create</a></div>
+           <div>
+             {% for post in posts %}
+               <table>
+                   <tr>
+                       <td>
+                           {{post.title}}
+                       </td>
 
-                 <table>
-                     <tr>
-                         <td>
-                             {{post.title}}
-                         </td>
-                         <td>
-                             <a href="#">Edit</a>
-                         </td>
-                         <td>
-                             <a href="#">Delete</a>
-                         </td>
+                       <td>
+                           <a href="#">Edit</a>
+                       </td>
 
-                     </tr>
-                 </table>
-                 {% endfor %}
-               </div>
+                       <td>
+                           <a href="#">Delete</a>
+                       </td>
+                   </tr>
+             </table>
+             {% endfor %}
            </div>
+       </div>
   </body>
 </html>
