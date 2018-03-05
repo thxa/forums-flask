@@ -16,23 +16,26 @@
            </div>
 
            <div id="main">
-             <div>
+               <div><a href="#">Create</a></div>
+               <div>
                  {% for post in posts %}
 
                  <table>
-                     <tbody>
                      <tr>
                          <td>
                              {{post.title}}
                          </td>
                          <td>
-                             <a href="#">delete</a>
+                             <a href="#">Edit</a>
                          </td>
+                         <td>
+                             <a href="#">Delete</a>
+                         </td>
+
                      </tr>
-                     </tbody>
-                </table>
+                 </table>
                  {% endfor %}
-             </div>
+               </div>
            </div>
   </body>
 </html>
