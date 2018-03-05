@@ -6,36 +6,37 @@
         <link rel="stylesheet" href="/static/css/style.css">
   </head>
   <body>
+    <div id="header">
+        <div class="container">
+            <div class="float-left"></div>
+            <div class="float-right">
+                <img src="/static/img/OMAC.png">
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div><a href="#">Create</a></div>
+        <div>
+         {% for post in posts %}
+            <table>
+                <tr>
+                    <td>
+                        {{post.title}}
+                    </td>
 
-         <div id="header">
-           <div class="container">
-             <div class="float-left"></div>
-             <div class="float-right">
-                 <img src="/static/img/OMAC.png">
-             </div>
-           </div>
+                    <td>
+                        <a href="#">Edit</a>
+                    </td>
 
-           <div id="main">
-               <div><a href="#">Create</a></div>
-               <div>
-                 {% for post in posts %}
-
-                 <table>
-                     <tr>
-                         <td>
-                             {{post.title}}
-                         </td>
-                         <td>
-                             <a href="#">Edit</a>
-                         </td>
-                         <td>
-                             <a href="#">Delete</a>
-                         </td>
-
-                     </tr>
-                 </table>
-                 {% endfor %}
-               </div>
-           </div>
+                    <td>
+                        <a href="#">Delete</a>
+                    </td>
+                </tr>
+         </table>
+         {% endfor %}
+       </div>
+        <div id="footer">
+            <h4>Done by: 0xThamer</h4>
+        </div>
   </body>
 </html>
