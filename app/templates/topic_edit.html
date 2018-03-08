@@ -20,12 +20,12 @@
   <div id="main">
     <div class="container">
         <div class="input-form">
-          <form  action="{{ url_for('topic_edit', _id = post.id) }}" method="post">
+          <form  action="{{ url_for('topic_edit', id = post.id) }}" method="post">
 
-            <input type="text" name="title">
+            <input type="text" value="{{ post.title }}" name="title">
             <br>
-            <input type="text" name="content">
-            <input type="submit" value="update">
+            <input type="text" value="{{ post.content }}" name="content">
+            <input type="submit" value="save">
 
           </form>
         </div>

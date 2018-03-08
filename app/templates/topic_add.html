@@ -6,15 +6,13 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-     <div class="input-form">
-        <from action="{{ url_for('topic_add') }}" method="post">
+        <form action="{{ url_for('topic_add') }}" method="post">
 
-       <input type="text" name="title" />
+       <input type="text" name="title"/>
             <br>
-       <input type="text" name="content" />
+       <input type="text" name="content"/>
        <input type="submit" value="Create">
 
-       </from>
-   </div>
+        </form>
 </body>
 </html>
