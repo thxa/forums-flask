@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, abort
 from app import models
 from app import app, member_store, post_store
 
@@ -12,33 +12,41 @@ def home():
 @app.route("/topic/add", methods=["GET", "POST"])
 def topic_add():
     if request.method == "POST":
-        new_post = models.Post(request.form["title"], request.form["content"])
-        post_store.add(new_post)
+        post = models.Post(request.form["title"], request.form["content"])
+        post_store.add(post)
         return redirect(url_for("home"))
     else:
         return render_template("topic_add.html")
 
 
-@app.route("/topic/delete/<int:_id>")
-def topic_delete(_id):
-    post_store.delete(_id)
+@app.route("/topic/delete/<int:id>")
+def topic_delete(id):
+    post_store.delete(id)
     return redirect(url_for("home"))
 
 
-@app.route("/topic/update/<int:_id>", methods=["GET", "POST"])
-def topic_edit(_id):
+@app.route("/topic/update/<int:id>", methods=["GET", "POST"])
+def topic_edit(id):
+    post = post_store.get_by_id(id)
+    if post is None:
+        abort(404)
     if request.method == "POST":
-        edit_post = post_store.get_by_id(_id)
-        edit_post.title = request.form["title"]
-        edit_post.content = request.form["content"]
-        post_store.update(edit_post)
+        post.title = request.form["title"]
+        post.content = request.form["content"]
+        post_store.update(post)
         return redirect(url_for("home"))
-    else:
-        edit_post = post_store.get_by_id(_id)
-        return render_template("topic_edit.html", post=edit_post)
+    elif request.method == "GET":
+        return render_template("topic_edit.html", post=post)
 
 
-@app.route("/topic/show/<int:_id>", methods=["GET"])
-def topic_show(_id):
-    post_show = post_store.get_by_id(_id)
-    return render_template("topic_show.html", post=post_show)
+@app.route("/topic/show/<int:id>", methods=["GET"])
+def topic_show(id):
+    post = post_store.get_by_id(id)
+    if post is None:
+        abort(404)
+    return render_template("topic_show.html", post=post)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
