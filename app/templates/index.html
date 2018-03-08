@@ -6,37 +6,64 @@
         <link rel="stylesheet" href="/static/css/style.css">
   </head>
   <body>
-
-         <div id="header">
-           <div class="container">
-             <div class="float-left"></div>
-             <div class="float-right">
-                 <img src="/static/img/OMAC.png">
-             </div>
-           </div>
-         </div>
+    <div id="header">
+      <div class="container">
+        <div class="float-left"></div>
+        <div class="float-right">
+          <a href="{{ url_for('home') }}"><img src="/static/img/OMAC.png"></a>
+          </div>
+      </div>
+    </div>
 
        <div id="main">
-           <div><a href="#">Create</a></div>
+         <div class="container">
+           <a href="{{ url_for('topic_add') }}">Create</a>
            <div>
-             {% for post in posts %}
                <table>
-                   <tr>
-                       <td>
-                           {{post.title}}
-                       </td>
+                 <thead>
+               <tr>
+                   <th>
+                       Title
+                   </th>
 
-                       <td>
-                           <a href="#">Edit</a>
-                       </td>
+                   <th>
+                       Show
+                   </th>
 
-                       <td>
-                           <a href="#">Delete</a>
-                       </td>
-                   </tr>
-             </table>
-             {% endfor %}
-           </div>
+                   <th>
+                       Edit
+                   </th>
+
+                   <th>
+                       Delete
+                   </th>
+               </tr>
+           </thead>
+                   <tbody>
+                       {% for post in posts %}
+                       <tr>
+                           <td>
+                               {{post.title}}
+                           </td>
+
+                           <td>
+                               <a href="{{ url_for('topic_show', _id = post.id) }}">Show</a>
+                           </td>
+                           <td>
+
+                               <a href="{{ url_for('topic_edit', _id = post.id) }}">Edit</a>
+                           </td>
+
+                           <td>
+                               <a href="{{ url_for('topic_delete', _id = post.id) }}">Delete</a>
+                           </td>
+
+                       </tr>
+                       {% endfor %}
+                   </tbody>
+              </table>
+        </div>
+      </div>
 
            <div id="footer">
                 <h4>Done by: 0xThamer</h4>
