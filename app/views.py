@@ -52,14 +52,15 @@ def page_not_found(e):
     return render_template("404.html"), 404
 
 
+# api
 @app.route("/api/topic/all")
-def topic_get_all():
+def api_topic_get_all():
     posts = [post.__dict__() for post in post_store.get_all()]
     return jsonify(posts)
 
 
 @app.route("/api/topic/add", methods=["POST"])
-def topic_create():
+def api_topic_create():
     request_data = request.get_json()
     new_post = models.Post(request_data["title"], request_data["content"])
     post_store.add(new_post)
@@ -69,4 +70,12 @@ def topic_create():
 @app.route("/api/topic/show/<int:id>", methods=["GET"])
 def api_topic_show(id):
     post = post_store.get_by_id(id)
+    if post is None:
+        abort(404)
     return jsonify(post.__dict__())
+
+
+@app.route("/api/topic/delete/<int:id>")
+def api_topic_delete(id):
+    post_store.delete(id)
+    return redirect(url_for("api_topic_get_all"))
