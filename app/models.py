@@ -16,7 +16,7 @@ class Member:
             "id": self.id,
             "name": self.name,
             "age": self.age,
-            "posts": self.posts,
+            "posts": self.posts
         }
 
 
@@ -37,4 +37,5 @@ class Post:
             "title": self.title,
             "content": self.content,
             "member_id": self.member_id,
+            "data": self.data
         }

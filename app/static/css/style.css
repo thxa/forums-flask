@@ -6,7 +6,7 @@ margin: 0;
   width: 100%;
   min-height: 50px;
   background-color: #ffffff;
-  background: linear-gradient(#3d3d3d3d, #ffffffff)
+  background: linear-gradient(#3d3d3d3d, #ffffffff);
   margin: 0 auto;
   /*border-bottom: 1px solid grey;*/
   box-shadow: 0 0 35px #e6e6e6;
@@ -32,7 +32,7 @@ float: left;
   min-width: 980px;
   height:600px;
   background-color: #fff;
-  background: linear-gradient(#ffffff, #d3d8e8)
+  background: linear-gradient(#ffffff, #d3d8e8);
 }
 
 table td {
