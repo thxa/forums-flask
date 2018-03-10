@@ -25,7 +25,7 @@ def topic_delete(id):
     return redirect(url_for("home"))
 
 
-@app.route("/topic/update/<int:id>", methods=["GET", "POST"])
+@app.route("/topic/edit/<int:id>", methods=["GET", "POST"])
 def topic_edit(id):
     post = post_store.get_by_id(id)
     if post is None:
@@ -79,3 +79,14 @@ def api_topic_show(id):
 def api_topic_delete(id):
     post_store.delete(id)
     return redirect(url_for("api_topic_get_all"))
+
+
+@app.route("/api/topic/edit/<int:id>", methods=["POST"])
+def api_topic_edit(id):
+    post = post_store.get_by_id(id)
+    if post is None:
+        abort(404)
+    post_data = request.get_json()
+    post.title = post_data["title"]
+    post.content = post_data["content"]
+    return jsonify(post.__dict__())
