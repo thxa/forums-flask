@@ -64,3 +64,9 @@ def topic_create():
     new_post = models.Post(request_data["title"], request_data["content"])
     post_store.add(new_post)
     return jsonify(new_post.__dict__())
+
+
+@app.route("/api/topic/show/<int:id>", methods=["GET"])
+def api_topic_show(id):
+    post = post_store.get_by_id(id)
+    return jsonify(post.__dict__())
