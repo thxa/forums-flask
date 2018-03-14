@@ -41,8 +41,8 @@ def api_topic_delete(id):
     return result
 
 
-@app.route("/api/topic/edit/<int:id>", methods=["PUT"])
-def api_topic_edit(id):
+@app.route("/api/topic/update/<int:id>", methods=["PUT"])
+def api_topic_update(id):
     request_data = request.get_json()
     post = post_store.get_by_id(id)
     try:
