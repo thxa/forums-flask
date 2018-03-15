@@ -25,8 +25,8 @@ def topic_delete(id):
     return redirect(url_for("home"))
 
 
-@app.route("/topic/edit/<int:id>", methods=["GET", "POST"])
-def topic_edit(id):
+@app.route("/topic/update/<int:id>", methods=["GET", "POST"])
+def topic_update(id):
     post = post_store.get_by_id(id)
     if post is None:
         abort(404)
@@ -36,7 +36,7 @@ def topic_edit(id):
         post_store.update(post)
         return redirect(url_for("home"))
     elif request.method == "GET":
-        return render_template("topic_edit.html", post=post)
+        return render_template("topic_update.html", post=post)
 
 
 @app.route("/topic/show/<int:id>", methods=["GET"])
