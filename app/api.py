@@ -35,7 +35,7 @@ def api_topic_show(id):
 def api_topic_delete(id):
     try:
         result = post_store.delete(id)
-        result = jsonify(result.__dict__())
+        result = jsonify(result)
     except ValueError:
         result = abort(404, f"topic with id:{id} doesn't exist")
     return result
