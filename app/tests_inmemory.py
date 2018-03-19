@@ -1,7 +1,6 @@
 from app import models
 from app import stores
 
-
 def create_members():
     member1 = models.Member("Mohammed", 20)
     member2 = models.Member("Mohammed", 22)
