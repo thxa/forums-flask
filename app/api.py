@@ -13,7 +13,7 @@ def api_topic_get_all():
 def api_topic_create():
     request_data = request.get_json()
     try:
-        new_post = models.Post(request_data["title"], request_data["content"])
+        new_post = models.Post(title=request_data["title"], content=request_data["content"])
         post_store.add(new_post)
         result = jsonify(new_post.__dict__())
     except KeyError:
