@@ -22,7 +22,7 @@ dummy_posts = [
 
 
 def seed_stores(member_store, post_store):
-    db.drop_all()
+    #db.drop_all()
     db.create_all()
 
     for member in dummy_members:
